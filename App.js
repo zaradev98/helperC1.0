@@ -1,20 +1,30 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { LanguageProvider } from './src/contexts/LanguageContext';
+import { AuthProvider } from './src/contexts/AuthContext';
+import { OrdersProvider } from './src/contexts/OrdersContext';
+import { ChatProvider } from './src/contexts/ChatContext';
+import AppNavigator from './src/navigation/AppNavigator';
+import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <StatusBar style="dark" />
+
+      <AuthProvider>
+        <LanguageProvider>
+          <OrdersProvider>
+            <ChatProvider>
+              <GestureHandlerRootView style={{ flex: 1 }}>
+                  <AppNavigator />
+              </GestureHandlerRootView>
+            </ChatProvider>
+          </OrdersProvider>
+        </LanguageProvider>
+      </AuthProvider>
+    </SafeAreaProvider >
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
