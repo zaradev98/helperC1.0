@@ -7,7 +7,6 @@ import { AuthProvider } from './src/contexts/AuthContext';
 import { OrdersProvider } from './src/contexts/OrdersContext';
 import { ChatProvider } from './src/contexts/ChatContext';
 import AppNavigator from './src/navigation/AppNavigator';
-import { KeyboardProvider } from 'react-native-keyboard-controller';
 
 export default function App() {
   return (
